@@ -1,16 +1,15 @@
 #include "libft.h"
-#include <stdlib.h>
 
 int	ft_lstsize(t_list **lst)
 {
-	t_list	*nl_ptr;
+	t_list	*nptr;
 	int		size;
 
 	size = 1;
-	nl_ptr = (*lst)->next;
-	while (nl_ptr != NULL)
+	nptr = (*lst)->next;
+	while (nptr != NULL)
 	{
-		nl_ptr = nl_ptr->next;
+		nptr = nptr->next;
 		size++;
 	}
 	return (size);

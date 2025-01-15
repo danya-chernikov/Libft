@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:55:01 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 16:55:53 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/12 16:46:31 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	t_list	*nptr;
 
 	nptr = (*lst)->next;
-	while (nptr->next != NULL)
-		nptr = nptr->next;
-	nptr->next = new;
-	new->next = NULL;
+	if (nptr == NULL)
+	{
+		(*lst)->next = new;
+		new->next = NULL;
+	}
+	else
+	{
+		while (nptr->next != NULL)
+			nptr = nptr->next;
+		nptr->next = new;
+		new->next = NULL;
+	}
 }

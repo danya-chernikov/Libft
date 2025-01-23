@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 16:55:54 by dchernik          #+#    #+#             */
-/*   Updated: 2024/12/27 16:55:55 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/01/22 18:31:39 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_lstsize(t_list **lst)
 	t_list	*nptr;
 	int		size;
 
+	if (*lst == NULL)
+		return (0);
 	size = 1;
 	nptr = (*lst)->next;
 	while (nptr != NULL)

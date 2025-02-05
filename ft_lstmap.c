@@ -6,14 +6,15 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 17:53:58 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/05 17:53:59 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:14:02 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	alg(t_list *new_list_head, t_list *node, t_list *nptr);
+static int	alg(t_list *new_list_head, t_list *nptr,
+				void *(*f)(void *), void (*del)(void *));
 
 /* This function must use del() in case of a memory allocation error when
  * creating a new list! That's what the del() function is for! It is
@@ -22,7 +23,6 @@ static int	alg(t_list *new_list_head, t_list *node, t_list *nptr);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_list_head;
-	t_list	*node;
 	t_list	*nptr;
 
 	if ((lst == NULL) || (f == NULL) || (del == NULL))
@@ -32,13 +32,16 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	if (new_list_head == NULL)
 		return (NULL);
 	f(new_list_head->content);
-	if (!alg(new_list_head, node, nptr))
+	if (!alg(new_list_head, nptr, f, del))
 		return (NULL);
 	return (new_list_head);
 }
 
-static int	alg(t_list *new_list_head, t_list *node, t_list *nptr)
+static int	alg(t_list *new_list_head, t_list *nptr,
+				void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*node;
+
 	nptr = nptr->next;
 	while (nptr != NULL)
 	{
@@ -49,8 +52,9 @@ static int	alg(t_list *new_list_head, t_list *node, t_list *nptr)
 			while (nptr != NULL)
 			{
 				del(nptr->content);
+				node = nptr->next;
 				free(nptr);
-				nptr = nptr->next;
+				nptr = node;
 			}
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:21:45 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/07 01:21:48 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:37:12 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ t_list	*ft_lstlast(t_list *lst)
 
 	if (lst == NULL)
 		return (NULL);
-	if (lst->next == NULL)
-		return (lst);
-	nptr = lst->next;
+	nptr = lst;
 	while (nptr->next != NULL)
 		nptr = nptr->next;
 	return (nptr);

@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:23:22 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/07 13:45:05 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:01:22 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,17 @@
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*cur_node;
-	t_list	*next_node;
+	t_list	*temp_node;
 
 	if ((lst == NULL) || (*lst == NULL) || (del == NULL))
 		return ;
-	cur_node = (*lst)->next;
-	if (cur_node != NULL)
-		next_node = cur_node->next;
-	del((*lst)->content);
-	free(*lst);
+	cur_node = *lst;
 	while (cur_node != NULL)
 	{
-		del(cur_node->content);
-		free(cur_node);
-		cur_node = next_node;
-		if (cur_node == NULL)
-			break ;
-		next_node = next_node->next;
+		temp_node = cur_node;
+		cur_node = cur_node->next;
+		del(temp_node->content);
+		free(temp_node);
 	}
 	*lst = NULL;
 }

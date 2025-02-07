@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:20:49 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/07 01:20:52 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:03:20 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*lptr;
 
-	if (content == NULL)
-		return (NULL);
 	lptr = (t_list *)malloc(1 * sizeof(t_list));
 	if (lptr == NULL)
 		return (NULL);

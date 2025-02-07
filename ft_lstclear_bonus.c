@@ -6,7 +6,7 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 01:23:22 by dchernik          #+#    #+#             */
-/*   Updated: 2025/02/07 01:23:23 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:45:05 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		next_node = cur_node->next;
 	del((*lst)->content);
 	free(*lst);
-	(*lst) = NULL;
 	while (cur_node != NULL)
 	{
 		del(cur_node->content);
@@ -46,5 +45,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 			break ;
 		next_node = next_node->next;
 	}
-	lst = NULL;
+	*lst = NULL;
 }

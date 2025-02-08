@@ -6,13 +6,12 @@
 /*   By: dchernik <dchernik@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 00:46:39 by dchernik          #+#    #+#             */
-/*   Updated: 2024/10/03 02:50:44 by dchernik         ###   ########.fr       */
+/*   Updated: 2025/02/08 12:47:11 by dchernik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static size_t	count_words(char const *s, char delim);
 static int		split_alg_loop(char ***r, char const *str, char c, size_t *cnt);
